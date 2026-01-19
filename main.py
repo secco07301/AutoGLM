@@ -32,6 +32,7 @@ from phone_agent.device_factory import DeviceType, get_device_factory, set_devic
 from phone_agent.model import ModelConfig
 from phone_agent.xctest import XCTestConnection
 from phone_agent.xctest import list_devices as list_ios_devices
+from MuMuConnect import environment_init
 
 
 def check_system_requirements(
@@ -683,6 +684,7 @@ def handle_device_commands(args) -> bool:
 
 def main():
     """Main entry point."""
+    environment_init()
     args = parse_args()
 
     # Set device type globally based on args

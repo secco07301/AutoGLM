@@ -154,7 +154,7 @@ def environment_init():
                 print(f"{color_text('环境配置完成，进入下一阶段。', 'green')}")
                 break
             case '5':
-                print(f"{color_text('程序退出。', 'green')}")
+                print(f"{color_text('退出MuMu模拟器连接管理工具。', 'green')}")
                 break
             case _:
                 print(f"{color_text('无效选择，请输入1到5之间的数字。', 'red')}")

@@ -355,9 +355,10 @@ def check_model_api(base_url: str, model_name: str, api_key: str = "EMPTY") -> b
 
 def parse_args() -> argparse.Namespace:
     """Parse command line arguments."""
+    # parser指的是一个ArgumentParser对象，用于解析命令行参数。它是一个类的实例，可以用来定义和处理命令行参数。
     parser = argparse.ArgumentParser(
         description="Phone Agent - AI-powered phone automation",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
+        formatter_class=argparse.RawDescriptionHelpFormatter,   # 使用RawDescriptionHelpFormatter，以原始格式显示
         epilog="""
 Examples:
     # Run with default settings (Android)
@@ -406,14 +407,14 @@ Examples:
     parser.add_argument(
         "--base-url",
         type=str,
-        default=os.getenv("PHONE_AGENT_BASE_URL", "http://localhost:8000/v1"),
+        default=os.getenv("PHONE_AGENT_BASE_URL", "https://open.bigmodel.cn/api/paas/v4"), 
         help="Model API base URL",
     )
 
     parser.add_argument(
         "--model",
         type=str,
-        default=os.getenv("PHONE_AGENT_MODEL", "autoglm-phone-9b"),
+        default=os.getenv("PHONE_AGENT_MODEL", "autoglm-phone"),
         help="Model name",
     )
 
@@ -684,7 +685,9 @@ def handle_device_commands(args) -> bool:
 
 def main():
     """Main entry point."""
-    environment_init()
+    start_MuMu = input("Would you want to start with MuMu? (y/n): ").strip().lower()
+    if start_MuMu == "y":
+        environment_init()
     args = parse_args()
 
     # Set device type globally based on args
